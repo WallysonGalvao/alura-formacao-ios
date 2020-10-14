@@ -8,9 +8,13 @@
 import UIKit
 
 class RefeicoesTableViewController: UITableViewController, AddMealDelegate {
-    var meals = [Meal(name: "Macarrao", happiness: 5),
-                 Meal(name: "Pizza", happiness: 5),
-                 Meal(name: "Ovo", happiness: 5)]
+    var meals: [Meal] = []
+    
+    override func viewDidLoad() {
+        meals = MealDao().recovery()
+    }
+    
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
@@ -31,6 +35,7 @@ class RefeicoesTableViewController: UITableViewController, AddMealDelegate {
     func add(_ meal: Meal) {
         meals.append(meal)
         tableView.reloadData()
+        MealDao().save(meals)
     }
     
     @objc func showDetails(_ gesture: UILongPressGestureRecognizer) {
@@ -41,12 +46,11 @@ class RefeicoesTableViewController: UITableViewController, AddMealDelegate {
             
             let meal = meals[indexPath.row]
             
-            let alert = UIAlertController(title: meal.name, message: meal.details(), preferredStyle: .alert)
-            let closeBtn = UIAlertAction(title: "close", style: .cancel, handler: nil)
-            
-            alert.addAction(closeBtn)
-            
-            present(alert, animated: true, completion: nil)
+            RemoveMealViewController(controller: self).show(meal, handler: {
+                alert in
+                self.meals.remove(at: indexPath.row)
+                self.tableView.reloadData()
+            })
         }
     }
     
@@ -57,6 +61,6 @@ class RefeicoesTableViewController: UITableViewController, AddMealDelegate {
                 viewController.delegate = self
             }
         }
-       
+        
     }
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4D6DAFB2252D34B900C898F6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6DAFB1252D34B900C898F6 /* Alert.swift */; };
+		4DB7C7AD253688BE001DA725 /* RemoveMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7C7AC253688BE001DA725 /* RemoveMealViewController.swift */; };
+		4DB7C7B025373D6B001DA725 /* MealDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7C7AF25373D6B001DA725 /* MealDao.swift */; };
+		4DB7C7B325374178001DA725 /* ItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7C7B225374178001DA725 /* ItemDao.swift */; };
 		F10AE16C2515907E007967FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10AE16B2515907E007967FA /* AppDelegate.swift */; };
 		F10AE16E2515907E007967FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10AE16D2515907E007967FA /* SceneDelegate.swift */; };
 		F10AE1702515907E007967FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10AE16F2515907E007967FA /* ViewController.swift */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		4D6DAFB1252D34B900C898F6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		4DB7C7AC253688BE001DA725 /* RemoveMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMealViewController.swift; sourceTree = "<group>"; };
+		4DB7C7AF25373D6B001DA725 /* MealDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDao.swift; sourceTree = "<group>"; };
+		4DB7C7B225374178001DA725 /* ItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDao.swift; sourceTree = "<group>"; };
 		F10AE1682515907E007967FA /* eggplant-brownie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eggplant-brownie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10AE16B2515907E007967FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F10AE16D2515907E007967FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 				F10AE1842515A8A6007967FA /* Meal.swift */,
 				F10AE1872515A9DC007967FA /* Item.swift */,
 				4D6DAFB1252D34B900C898F6 /* Alert.swift */,
+				4DB7C7AF25373D6B001DA725 /* MealDao.swift */,
+				4DB7C7B225374178001DA725 /* ItemDao.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -96,6 +104,7 @@
 				F10AE16F2515907E007967FA /* ViewController.swift */,
 				F17A689F251BC05300B5B2EA /* AddItensViewController.swift */,
 				F17A689B251B929D00B5B2EA /* RefeicoesTableViewController.swift */,
+				4DB7C7AC253688BE001DA725 /* RemoveMealViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -181,10 +190,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F10AE1882515A9DC007967FA /* Item.swift in Sources */,
+				4DB7C7B025373D6B001DA725 /* MealDao.swift in Sources */,
 				F10AE1702515907E007967FA /* ViewController.swift in Sources */,
 				F10AE16C2515907E007967FA /* AppDelegate.swift in Sources */,
+				4DB7C7B325374178001DA725 /* ItemDao.swift in Sources */,
 				F17A689C251B929D00B5B2EA /* RefeicoesTableViewController.swift in Sources */,
 				F10AE16E2515907E007967FA /* SceneDelegate.swift in Sources */,
+				4DB7C7AD253688BE001DA725 /* RemoveMealViewController.swift in Sources */,
 				F17A68A1251BC05300B5B2EA /* AddItensViewController.swift in Sources */,
 				4D6DAFB2252D34B900C898F6 /* Alert.swift in Sources */,
 				F10AE1852515A8A6007967FA /* Meal.swift in Sources */,

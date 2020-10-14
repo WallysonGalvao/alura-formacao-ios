@@ -16,18 +16,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Attributes
     
     var delegate: AddMealDelegate?
-    
-    var itens = [Item(name: "Molho de tomate", calories: 40.0),
-                 Item(name: "Queijo", calories: 40.0),
-                 Item(name: "Molho apimentado", calories: 40.0),
-                 Item(name: "Manjericão", calories: 40.0)]
-    
+    var items: [Item] = []
     var selectedItens: [Item] = []
     
     // MARK: - Methods
     
     func add(_ item: Item) {
-        itens.append(item)
+        items.append(item)
+        ItemDao().save(items)
         
         if let tableView = itensTableView {
             tableView.reloadData()
@@ -64,6 +60,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         let addItemButton = UIBarButtonItem(title: "add", style: .plain, target: self, action: #selector(addItens))
         navigationItem.rightBarButtonItem = addItemButton
+        recoveryItems()
+    }
+    
+    func recoveryItems() {
+        items = ItemDao().recovery()
     }
     
     @objc func addItens() {
@@ -75,14 +76,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itens.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         
         let row = indexPath.row
-        let item = itens[row]
+        let item = items[row]
         
         cell.textLabel?.text = item.name
         
@@ -96,14 +97,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if cell.accessoryType == .none {
             cell.accessoryType = .checkmark
             let row = indexPath.row
-            selectedItens.append(itens[row])
+            selectedItens.append(items[row])
         } else {
             cell.accessoryType = .none
             
-            let item = itens[indexPath.row]
+            let item = items[indexPath.row]
             if let position = selectedItens.firstIndex(of: item) {
                 selectedItens.remove(at: position)
-
+                
                 for selectedItem in selectedItens {
                     print(selectedItem.name)
                 }
@@ -112,7 +113,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: - IBAction
-
+    
     @IBAction func adicionar(_ sender: Any) {
         if let meal = recoveryFromForm()  {
             delegate?.add(meal)
@@ -120,8 +121,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else {
             Alert(controller: self).show(message: "Error reading data from form")
         }
-        
-        
     }
 }
 

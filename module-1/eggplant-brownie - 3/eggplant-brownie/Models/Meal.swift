@@ -7,20 +7,34 @@
 
 import UIKit
 
-class Meal: NSObject {
+class Meal: NSObject, NSCoding {
     
     // MARK: - Attributes
     
     let name: String
     let happiness: Int
-    var itens: Array<Item> = []
+    var items: Array<Item> = []
     
     // MARK: - Construtor
     
-    init(name: String, happiness: Int, itens: [Item] = []) {
+    init(name: String, happiness: Int, items: [Item] = []) {
         self.name = name
         self.happiness = happiness
-        self.itens = itens
+        self.items = items
+    }
+    
+    // MARK: - NSCoding
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(happiness, forKey: "happiness")
+        coder.encode(items, forKey: "items")
+    }
+    
+    required init?(coder: NSCoder) {
+        name = coder.decodeObject(forKey: "name") as! String
+        happiness = coder.decodeInteger(forKey: "happiness")
+        items = coder.decodeObject(forKey: "items") as! Array<Item>
     }
     
     // MARK: - Methods
@@ -28,7 +42,7 @@ class Meal: NSObject {
     func totalCalories() -> Double {
         var total = 0.0
         
-        for item in itens {
+        for item in items {
             total += item.calories
         }
         
@@ -38,7 +52,7 @@ class Meal: NSObject {
     func details() -> String {
         var message = "Happiness: \(happiness)"
         
-        for item in itens {
+        for item in items {
             message += ", \(item.name) - calories: \(item.calories)"
         }
         
